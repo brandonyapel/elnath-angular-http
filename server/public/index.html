@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="RestaurantApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular HTTP</title>
+    <script src="/vendors/angular.js"></script>
+    <script src="/scripts/client.js"></script>
+</head>
+<body ng-controller="FoodController as vm">
+    <p>vm.message: {{vm.message}}</p>
+    <p>vm.foodArray: {{vm.foodArray}}</p>
+    <h1>Angular HTTP</h1>
+    <h2>New Food</h2>
+    <label for="name">Food Name:</label>
+    <input type="text" name="name" ng-model="vm.newFood.name" placeholder="Food Name"/>
+    <br>
+    <label for="deliciousness_rating">Deliciousness Rating:</label>
+    <input type="number" name="deliciousness_rating" ng-model="vm.newFood.deliciousness_rating" placeholder="Deliciousness Rating"/>
+    <br>
+    <label for="name">Is Hot?</label>
+    <input type="checkbox" name="is_hot" ng-model="vm.newFood.is_hot" placeholder="Is Hot"/>
+    <button ng-click="vm.addNewFood(vm.newFood)">Add Food</button>
+    <h2>Food List</h2>
+    <ul id="editList">
+        <li ng-repeat="food in vm.foodArray">
+            
+            <button ng-click="vm.editFood(food)">submit change to database</button>
+            {{food.name}}
+            <input type="text" ng-model=food.name >
+            {{food.deliciousness_rating}}
+            <input type="number" ng-model=food.deliciousness_rating >
+            {{food.is_hot}}
+            <input type="checkbox" ng-model=food.is_hot >
+            <!-- <span ng-show="food.is_hot">is really hot!</span>
+            <!-- ng if and ng show doe basically the same thing -->
+            <!-- <span ng-hide="food.is_hot">is not that hot</span> -->
+            <!-- and is
+            {{food.deliciousness_rating > 80 ? "mmhmm good" : "yuck"}} --> 
+        </li>
+    </ul>
+    <br>
+    <ul id="deleteList">
+        <li ng-repeat="food in vm.foodArray">
+                <button ng-click="vm.deleteFood(food.id)">delete</button>
+                {{food.name}}
+                <span ng-show="food.is_hot">is really hot!</span>
+                <!-- ng if and ng show doe basically the same thing -->
+                <span ng-hide="food.is_hot">is not that hot</span>
+                <!-- and is -->
+                {{food.deliciousness_rating > 80 ? "mmhmm good" : "yuck"}} 
+        </li>
+    </ul>
+    {{3+9}}
+    {{}}
+</body>
+</html>
